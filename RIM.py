@@ -141,8 +141,8 @@ class RIMCell(nn.Module):
 		self.comm_query_size = comm_query_size
 		self.comm_value_size = comm_value_size
 
-		self.key = nn.Linear(input_size, num_input_heads * input_query_size).to(self.device)
-		self.value = nn.Linear(input_size, num_input_heads * input_value_size).to(self.device)
+		self.key = nn.Linear(input_size, num_input_heads * input_query_size, bias=False).to(self.device)
+		self.value = nn.Linear(input_size, num_input_heads * input_value_size, bias=False).to(self.device)
 
 		if self.rnn_cell == 'GRU':
 			self.rnn = GroupGRUCell(input_value_size, hidden_size, num_units)
